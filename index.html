@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PORTFOLIO</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url('path/to/your/bac.jpg'); /* Add your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Roboto', sans-serif; /* Add a modern font */
+            color: #fff; /* Change text color to white for better contrast */
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            color: #00ff00; /* Bright green text */
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5em; /* Increase font size */
+            text-shadow: 2px 2px 4px #000; /* Add text shadow */
+            position: relative; /* Change to relative position */
+            width: 100%; /* Ensure the header spans the full width */
+            top: 0; /* Position the header at the top */
+            z-index: 1000; /* Ensure the header is above other content */
+        }
+        .tabs-header {
+            padding-top: 0; /* Remove padding added for fixed header */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            padding: 10px 0;
+            margin-top: 10px; /* Add margin to separate from the title header */
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8); /* Match header color */
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            color: #00ff00; /* Match header text color */
+            text-decoration: none; /* Remove underline from links */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+        }
+        .tab:hover {
+            background-color: rgba(127, 159, 161, 0.8); /* Semi-transparent hover effect */
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px; /* Increase gap between items */
+            width: 80%; /* Reduce width for better centering */
+            margin: 20px auto;
+            position: relative;
+            padding-top: 0; /* Remove padding added for fixed header */
+        }
+        .square {
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            color: #00ff00; /* Bright green text */
+            border: 1px solid #ddd;
+            padding: 16px; /* Increase padding */
+            box-sizing: border-box;
+            text-align: center; /* Center align text */
+            border-radius: 10px; /* Rounded edges */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+        }
+        .square:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+        }
+        .square-title {
+            background-color: #00ff00; /* Bright green background */
+            color: black; /* Black text */
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 10px 10px 0 0; /* Rounded top edges */
+            text-align: center; /* Center align the title */
+            text-transform: uppercase; /* Uppercase text */
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px; /* Increase gap between items */
+            width: 80%; /* Reduce width for better centering */
+            margin: 20px auto;
+        }
+        .gallery-item {
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            border: 1px solid #ddd;
+            padding: 0; /* Remove padding */
+            box-sizing: border-box;
+            border-radius: 10px; /* Rounded edges */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+            overflow: hidden; /* Ensure images fit within the container */
+        }
+        .gallery-item:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+        }
+        .gallery-item img,
+        .oval-image {
+            max-width: 100%;
+            height: auto;
+        }
+        .gallery-item img {
+            width: 100%; /* Ensure images fill the container */
+            height: 100%; /* Ensure images fill the container */
+            object-fit: cover; /* Ensure images cover the container without leaving space */
+            border-radius: 0; /* Remove rounded edges for rectangular shape */
+        }
+        .gallery-item:first-child {
+            grid-column: 1 / 2; /* Make the first item span only the first column */
+            justify-self: start; /* Align the first item to the start (left) */
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            color: #32CD32; /* Darker, lighter, and more vibrant green text */
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            text-shadow: 2px 2px 4px #000; /* Add text shadow */
+        }
+        .oval-image {
+            border-radius: 50%; /* Make the image oval */
+            display: block;
+            margin: 0 auto; /* Center the image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow to the image */
+            max-width: 250px; /* Adjust the size of the first image */
+        }
+
+        /* Media queries for responsive design */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr; /* Single column layout for smaller screens */
+            }
+            .gallery-container {
+                grid-template-columns: 1fr; /* Single column layout for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WELCOME TO MALAMBO CHABOTA'S BIOGRAPHY</h1>
+    </header>
+
+    <div class="tabs-header">
+        <div class="tabs">
+            <a href="#personal-info" class="tab">Personal Information</a>
+            <a href="#skills" class="tab">Skills</a>
+            <a href="#attributes" class="tab">Attributes</a>
+            <a href="#about-me" class="tab">About Me</a>
+            <a href="#gallery" class="tab">Gallery</a>
+        </div>
+    </div>
+    
+    <!-- Add the image before the squares -->
+    <div style="text-align: left; margin: 50px 0;">
+        <img src="path/to/your/malambo.jpg" alt="Top Image" class="oval-image">
+    </div>
+
+    <div class="grid-container">
+        <div id="personal-info" class="square">
+            <div class="square-title">Personal Information</div>
+            <div>
+                <div>My name is Malambo Chabotas, I am a software developer and a web developer.</div>
+                <div>I am a student at the Chalimbana University of Zambia, studying INFORMATION, COMMUNICATION AND TECHNOLOGY.</div>
+            </div>
+        </div>
+
+        <div id="skills" class="square">
+            <div class="square-title">Skills</div>
+            <div>I am a hardworking and dedicated person who is always willing to learn new things.</div>
+            <div>I am passionate about technology and I am always looking for ways to improve my skills.</div>
+            <div>I am a team player and I work well with others.</div>
+            <div>I am also a good communicator and I am able to work well under pressure.</div>
+            <div>I am always looking for new opportunities to grow and develop my skills.</div>
+        </div>
+
+        <div id="attributes" class="square">
+            <div class="square-title">Attributes</div>
+            <div>I am a fast learner and I am always willing to take on new challenges.</div>
+            <div>I am a creative thinker and I am always looking for new ways to solve problems.</div>
+            <div>I am a self-motivated person and I am always looking for ways to improve myself.</div>
+            <div>I am a positive person and I always try to see the good in every situation.</div>
+            <div>I am a hardworking and dedicated person who is always willing to go the extra mile to get the job done.</div>
+        </div>
+
+        <div id="about-me" class="square">
+            <div class="square-title">About Me</div>
+            <div>I am a software developer with a passion for creating innovative solutions. I enjoy working on challenging projects and continuously improving my skills.</div>
+        </div>
+    </div>
+
+    <div id="gallery" class="gallery-container">
+        <div class="gallery-item">
+            <img src="path/to/your/1.jpg" alt="Gallery Image 1">
+        </div>
+        <div class="gallery-item">
+            <img src="path/to/your/2.jpg" alt="Gallery Image 2">
+        </div>
+        <div class="gallery-item">
+            <img src="path/to/your/3.jpg" alt="Gallery Image 3">
+        </div>
+        <div class="gallery-item">
+            <img src="path/to/your/4.jpg" alt="Gallery Image 4">
+        </div>
+        <div class="gallery-item">
+            <img src="path/to/your/5.jpg" alt="Gallery Image 5">
+        </div>
+        <div class="gallery-item">
+            <img src="path/to/your/6.jpg" alt="Gallery Image 6">
+        </div>
+    </div>
+
+    <footer>
+        <div>Contact Us</div>
+        <div>Email: chabotam54@gmail.com</div>
+        <div>Phone: +260 979 767 391</div>
+    </footer>
+</body>
+</html>
+
+
+
+
